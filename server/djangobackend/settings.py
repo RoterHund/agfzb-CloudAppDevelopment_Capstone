@@ -35,13 +35,14 @@ CSRF_TRUSTED_ORIGINS = ['<Your app URL>']
 # Application definition
 
 INSTALLED_APPS = [
-    'djangoapp.apps.DjangoappConfig',
+    #'djangoapp.apps.DjangoappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djangoapp',
 ]
 
 MIDDLEWARE = [
