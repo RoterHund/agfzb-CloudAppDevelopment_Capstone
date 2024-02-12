@@ -36,3 +36,14 @@ You must complete all the labs to successfully complete the project.
 2. Deploy your application
 
 python3 -m pip install -U -r requirements.txt
+
+
+**running cloudant nodejy**
+node get-dealership.js
+ - dealerships/get
+ - dealerships/get?state="state-name"
+
+**running cloudant python**
+python3.9 reviews.py
+ - api/get_reviews?id=15
+ - api/post_review
