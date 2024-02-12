@@ -98,13 +98,22 @@ def get_dealer_details(request, dealer_id):
         url = "https://foxtonalan-5000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/api/get_reviews"
         # Get dealers from the URL
         reviews = get_dealer_reviews_from_cf(url, dealer_id)
+        
+        print (reviews.sentiment)
+        
         # Concat all dealer's short name
-        dealer_reviews = ' '.join([review.review for review in reviews])
+        #dealer_reviews = ' '.join([review.review for review in reviews])
         # Return a list of dealer short name
-        return HttpResponse(dealer_reviews)
+        return HttpResponse(reviews)
 
 
 # Create a `add_review` view to submit a review
-# def add_review(request, dealer_id):
-# ...
-
+def add_review(request, dealer_id):
+#    First check if user is authenticated because only authenticated users can post reviews for a dealer.
+#   Create a dictionary object called review to append keys like(time, name, dealership, review, purchase).
+#   review["time"] = datetime.utcnow().isoformat()
+#   review["dealership"] = 11
+#   review["review"] = "This is a great car dealer"
+#   json_payload["review"] = review
+#   response = post_request(url, json_payload, dealerId=dealer_id)
+#   return HttpResponse(response)

@@ -30,6 +30,8 @@ def get_request(url, **kwargs):
 
 # Create a `post_request` to make HTTP POST requests
 # e.g., response = requests.post(url, params=kwargs, json=payload)
+def post_request(url, json_payload, **kwargs):
+    response = requests.post(url, params=kwargs, json=payload)
 
 
 # Create a get_dealers_from_cf method to get dealers from a cloud function
@@ -80,6 +82,7 @@ def get_dealer_reviews_from_cf(url, dealerId):
                                    #id=review_doc("id")
                                    )
             results.append(review_obj)
+            review_obj.sentiment = analyze_review_sentiments(review_obj.review)
 
     return results
 
@@ -105,12 +108,18 @@ def get_dealer_by_id_from_cf(url, dealerId):
     return results
 
 
-
-
-
 # Create an `analyze_review_sentiments` method to call Watson NLU and analyze text
-# def analyze_review_sentiments(text):
+def analyze_review_sentiments(text):
 # - Call get_request() with specified arguments
+...
+  params = dict()
+  params["text"] = kwargs["text"]
+  params["version"] = kwargs["version"]
+  params["features"] = kwargs["features"]
+  params["return_analyzed_text"] = kwargs["return_analyzed_text"]
+  response = requests.get(url, params=params, headers={'Content-Type': 'application/json'},
+                                    auth=HTTPBasicAuth('apikey', api_key))
+...
 # - Get the returned sentiment label such as Positive or Negative
 
 
